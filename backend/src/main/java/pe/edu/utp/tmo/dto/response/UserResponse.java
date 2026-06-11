@@ -1,0 +1,1 @@
+package pe.edu.utp.tmo.dto.response; public record UserResponse(Long id,String nombres,String correo,String rol,String area,boolean activo) {}

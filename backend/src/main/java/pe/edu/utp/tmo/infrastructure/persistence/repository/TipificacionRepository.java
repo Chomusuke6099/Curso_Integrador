@@ -1,0 +1,1 @@
+package pe.edu.utp.tmo.infrastructure.persistence.repository; import java.util.List; import org.springframework.data.jpa.repository.JpaRepository; import pe.edu.utp.tmo.model.entity.Tipificacion; public interface TipificacionRepository extends JpaRepository<Tipificacion,Long>{ List<Tipificacion> findByActivoTrueOrderByNombreAsc(); }

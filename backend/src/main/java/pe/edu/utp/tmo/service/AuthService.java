@@ -1,0 +1,1 @@
+package pe.edu.utp.tmo.service; import pe.edu.utp.tmo.dto.request.LoginRequest; import pe.edu.utp.tmo.dto.response.AuthResponse; public interface AuthService{AuthResponse login(LoginRequest r);}

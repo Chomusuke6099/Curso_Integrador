@@ -1,0 +1,1 @@
+package pe.edu.utp.tmo.dao; import pe.edu.utp.tmo.model.entity.AuditoriaEvento; public interface AuditoriaDAO { AuditoriaEvento registrarEvento(AuditoriaEvento evento); }

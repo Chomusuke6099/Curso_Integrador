@@ -1,0 +1,1 @@
+package pe.edu.utp.tmo.dto.response; public record KpiPorTipoResponse(String tipoCaso,long total,double promedioSegundos) {}

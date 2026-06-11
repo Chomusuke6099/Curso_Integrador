@@ -1,0 +1,1 @@
+package pe.edu.utp.tmo.service; import java.time.LocalDateTime; import pe.edu.utp.tmo.dto.response.DashboardResponse; public interface DashboardService{DashboardResponse resumen(String correo,LocalDateTime inicio,LocalDateTime fin);}

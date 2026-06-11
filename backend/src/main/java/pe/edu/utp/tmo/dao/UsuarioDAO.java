@@ -1,0 +1,1 @@
+package pe.edu.utp.tmo.dao; import java.util.Optional; import pe.edu.utp.tmo.model.entity.Usuario; public interface UsuarioDAO { Optional<Usuario> buscarPorCorreo(String correo); boolean existePorCorreo(String correo); Usuario guardar(Usuario usuario); Optional<Usuario> buscarPorId(Long id); }

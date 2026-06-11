@@ -1,0 +1,1 @@
+package pe.edu.utp.tmo.dto.response; public record TipificacionResponse(Long id,String nombre) {}

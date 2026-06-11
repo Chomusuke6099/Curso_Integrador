@@ -1,0 +1,1 @@
+package pe.edu.utp.tmo.service; import pe.edu.utp.tmo.dto.request.UserCreateRequest; import pe.edu.utp.tmo.dto.response.UserResponse; public interface UserService{UserResponse crear(UserCreateRequest r);}

@@ -1,0 +1,41 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports: ["5432:5432"]
+    volumes: [tmo_postgres_data:/var/lib/postgresql/data]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  backend:
+    build: ./backend
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      TMO_DB_URL: ${TMO_DB_URL}
+      TMO_DB_USER: ${TMO_DB_USER}
+      TMO_DB_PASSWORD: ${TMO_DB_PASSWORD}
+      TMO_JWT_SECRET: ${TMO_JWT_SECRET}
+      TMO_JWT_EXPIRATION_MINUTES: ${TMO_JWT_EXPIRATION_MINUTES}
+      TMO_CORS_ORIGINS: ${TMO_CORS_ORIGINS}
+      TMO_DEMO_DATA_ENABLED: ${TMO_DEMO_DATA_ENABLED}
+      TMO_DEMO_PASSWORD: ${TMO_DEMO_PASSWORD}
+    ports: ["8080:8080"]
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_API_BASE_URL: ${VITE_API_BASE_URL}
+    depends_on: [backend]
+    ports: ["5173:80"]
+
+volumes:
+  tmo_postgres_data:

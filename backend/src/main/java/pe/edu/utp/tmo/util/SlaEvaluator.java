@@ -1,0 +1,1 @@
+package pe.edu.utp.tmo.util; import org.springframework.stereotype.Component; import pe.edu.utp.tmo.model.entity.ParametroSLA; @Component public class SlaEvaluator{ public boolean excede(long tmo,ParametroSLA p){return p!=null && tmo>(p.getUmbralAlerta()*60L);} }

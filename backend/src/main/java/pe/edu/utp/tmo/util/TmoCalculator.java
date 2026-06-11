@@ -1,0 +1,3 @@
+package pe.edu.utp.tmo.util;
+import java.time.LocalDateTime; import java.time.temporal.ChronoUnit; import org.springframework.stereotype.Component; import pe.edu.utp.tmo.exception.ValidacionNegocioException;
+@Component public class TmoCalculator { public long calcularSegundos(LocalDateTime inicio,LocalDateTime fin){ if(inicio==null||fin==null) throw new ValidacionNegocioException("TMO_FECHAS_INVALIDAS","Las fechas oficiales son obligatorias."); if(fin.isBefore(inicio)) throw new ValidacionNegocioException("TMO_NEGATIVO","La fecha fin no puede ser anterior al inicio."); return ChronoUnit.SECONDS.between(inicio,fin);} }

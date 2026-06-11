@@ -1,0 +1,1 @@
+package pe.edu.utp.tmo.model.enums; public enum TipoCaso { RECLAMO, FACTURACION, SOPORTE, CORPORATIVO }

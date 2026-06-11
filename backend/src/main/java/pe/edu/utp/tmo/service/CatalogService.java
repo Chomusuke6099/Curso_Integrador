@@ -1,0 +1,1 @@
+package pe.edu.utp.tmo.service; import java.util.*; import pe.edu.utp.tmo.dto.response.TipificacionResponse; public interface CatalogService{List<TipificacionResponse> listarTipificacionesActivas();}

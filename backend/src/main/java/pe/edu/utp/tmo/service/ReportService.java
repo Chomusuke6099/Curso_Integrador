@@ -1,0 +1,1 @@
+package pe.edu.utp.tmo.service; import java.time.LocalDateTime; public interface ReportService{byte[] excel(String correo,LocalDateTime inicio,LocalDateTime fin);}

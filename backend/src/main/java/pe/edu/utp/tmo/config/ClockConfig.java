@@ -1,0 +1,1 @@
+package pe.edu.utp.tmo.config; import java.time.Clock; import org.springframework.context.annotation.*; @Configuration public class ClockConfig{ @Bean Clock systemClock(){return Clock.systemUTC();} }

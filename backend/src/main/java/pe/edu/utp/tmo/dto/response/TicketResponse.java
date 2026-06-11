@@ -1,0 +1,1 @@
+package pe.edu.utp.tmo.dto.response; import java.time.LocalDateTime; public record TicketResponse(Long id,String codigo,String tipoCaso,String estado,String referencia,String tipificacion,LocalDateTime fechaInicio,LocalDateTime fechaFin,Long tmoSegundos) {}

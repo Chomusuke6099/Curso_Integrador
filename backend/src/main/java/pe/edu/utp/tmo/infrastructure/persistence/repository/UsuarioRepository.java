@@ -1,0 +1,1 @@
+package pe.edu.utp.tmo.infrastructure.persistence.repository; import java.util.Optional; import org.springframework.data.jpa.repository.JpaRepository; import pe.edu.utp.tmo.model.entity.Usuario; public interface UsuarioRepository extends JpaRepository<Usuario,Long>{ Optional<Usuario> findByCorreoIgnoreCase(String correo); boolean existsByCorreoIgnoreCase(String correo); }

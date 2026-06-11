@@ -1,0 +1,8 @@
+package pe.edu.utp.tmo.config;
+import org.apache.commons.lang3.StringUtils; import org.springframework.beans.factory.annotation.Value; import org.springframework.boot.CommandLineRunner; import org.springframework.context.annotation.*; import org.springframework.security.crypto.password.PasswordEncoder; import pe.edu.utp.tmo.dao.*; import pe.edu.utp.tmo.model.entity.*; import pe.edu.utp.tmo.model.enums.*;
+@Configuration public class DataInitializer {
+ @Bean CommandLineRunner demo(@Value("${tmo.demo-data.enabled:false}") boolean enabled,@Value("${tmo.demo-data.password:}") String pass,UsuarioDAO usuarios,TipificacionDAO tips,SlaDAO slas,PasswordEncoder encoder){
+  return args->{ if(!enabled)return; if(StringUtils.length(pass)<12) throw new IllegalStateException("La contraseña demo requiere al menos 12 caracteres."); user(usuarios,encoder,"Analista TMO","analista@tmo.local",pass,RolUsuario.ANALISTA); user(usuarios,encoder,"Supervisor TMO","supervisor@tmo.local",pass,RolUsuario.SUPERVISOR); user(usuarios,encoder,"Gerente TMO","gerente@tmo.local",pass,RolUsuario.GERENTE); user(usuarios,encoder,"Administrador TMO","admin@tmo.local",pass,RolUsuario.ADMINISTRADOR); if(tips.listarActivas().isEmpty()){tips.guardar(new Tipificacion("Gestión completada",true));tips.guardar(new Tipificacion("Derivación interna",true));tips.guardar(new Tipificacion("Información insuficiente",true));} for(TipoCaso t:TipoCaso.values()) if(slas.buscarPorTipoCaso(t).isEmpty()) slas.guardarParametro(new ParametroSLA(t,15,20,true)); };
+ }
+ private void user(UsuarioDAO dao,PasswordEncoder e,String n,String c,String p,RolUsuario r){ if(!dao.existePorCorreo(c)) dao.guardar(new Usuario(n,c,e.encode(p),r,"Back Office Corporativo",true)); }
+}

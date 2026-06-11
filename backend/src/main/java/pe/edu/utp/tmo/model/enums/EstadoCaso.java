@@ -1,0 +1,1 @@
+package pe.edu.utp.tmo.model.enums; public enum EstadoCaso { ABIERTO, CERRADO, VENCIDO }
