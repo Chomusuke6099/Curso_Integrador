@@ -1,1 +1,8 @@
-package pe.edu.utp.tmo.dao; import java.util.*; import pe.edu.utp.tmo.model.entity.Tipificacion; public interface TipificacionDAO { List<Tipificacion> listarActivas(); Optional<Tipificacion> buscarPorId(Long id); Tipificacion guardar(Tipificacion t); }
+package pe.edu.utp.tmo.dao;
+import java.util.*;
+import pe.edu.utp.tmo.model.entity.Tipificacion;
+public interface TipificacionDAO {
+    List<Tipificacion> listarActivas();
+    Optional<Tipificacion> buscarPorId(Long id);
+    Tipificacion guardar(Tipificacion t);
+}

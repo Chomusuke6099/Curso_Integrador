@@ -1,1 +1,21 @@
-package pe.edu.utp.tmo.mapper; import org.springframework.stereotype.Component; import pe.edu.utp.tmo.dto.response.TicketResponse; import pe.edu.utp.tmo.model.entity.Caso; @Component public class TicketMapper{ public TicketResponse toResponse(Caso c,Long tmo){String tip=c.getTipificacion()==null?null:c.getTipificacion().getNombre(); return new TicketResponse(c.getId(),c.getCodigo(),c.getTipoCaso().name(),c.getEstado().name(),c.getReferencia(),tip,c.getFechaInicio(),c.getFechaFin(),tmo);} }
+package pe.edu.utp.tmo.mapper;
+import org.springframework.stereotype.Component;
+import pe.edu.utp.tmo.dto.response.TicketResponse;
+import pe.edu.utp.tmo.model.entity.Caso;
+
+@Component public class TicketMapper{
+    public TicketResponse toResponse(Caso c,Long tmo){
+        String tip=c.getTipificacion()==null?null:c.getTipificacion().getNombre();
+        return new TicketResponse(
+            c.getId(),
+            c.getCodigo(),
+            c.getTipoCaso().name(),
+            c.getEstado().name(),
+            c.getReferencia(),
+            tip,
+            c.getFechaInicio(),
+            c.getFechaFin(),
+            tmo
+        );
+    }
+}

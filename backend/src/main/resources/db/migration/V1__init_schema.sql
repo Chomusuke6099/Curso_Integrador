@@ -61,3 +61,4 @@ CREATE INDEX idx_casos_analista ON casos(analista_id);
 CREATE INDEX idx_casos_tipo ON casos(tipo_caso);
 CREATE INDEX idx_casos_fecha_inicio ON casos(fecha_inicio);
 CREATE INDEX idx_registros_tmo_fin ON registros_tmo(fin);
+

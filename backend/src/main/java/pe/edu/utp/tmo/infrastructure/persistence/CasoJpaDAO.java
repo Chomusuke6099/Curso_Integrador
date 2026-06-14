@@ -1,1 +1,35 @@
-package pe.edu.utp.tmo.infrastructure.persistence; import java.time.LocalDateTime; import java.util.*; import org.springframework.stereotype.Repository; import pe.edu.utp.tmo.dao.CasoDAO; import pe.edu.utp.tmo.infrastructure.persistence.repository.CasoRepository; import pe.edu.utp.tmo.model.entity.Caso; import pe.edu.utp.tmo.model.enums.EstadoCaso; @Repository public class CasoJpaDAO implements CasoDAO{ private final CasoRepository r; public CasoJpaDAO(CasoRepository r){this.r=r;} public Caso guardar(Caso c){return r.save(c);} public Optional<Caso> buscarPorId(Long id){return r.findById(id);} public List<Caso> listarPorAnalista(Long id){return r.findByAnalistaIdOrderByFechaInicioDesc(id);} public List<Caso> listarPorEstado(EstadoCaso e){return r.findByEstado(e);} public List<Caso> listarPorPeriodo(LocalDateTime i,LocalDateTime f){return r.findByFechaInicioBetweenOrderByFechaInicioDesc(i,f);} }
+package pe.edu.utp.tmo.infrastructure.persistence;
+import java.time.LocalDateTime;
+import java.util.*;
+import org.springframework.stereotype.Repository;
+import pe.edu.utp.tmo.dao.CasoDAO;
+import pe.edu.utp.tmo.infrastructure.persistence.repository.CasoRepository;
+import pe.edu.utp.tmo.model.entity.Caso;
+import pe.edu.utp.tmo.model.enums.EstadoCaso;
+
+@Repository
+
+public class CasoJpaDAO implements CasoDAO{
+    private final CasoRepository r;
+    public CasoJpaDAO(CasoRepository r){this.r=r;}
+    
+    public Caso guardar(Caso c){
+        return r.save(c);
+    } 
+    
+    public Optional<Caso> buscarPorId(Long id){
+        return r.findById(id);
+    } 
+    
+    public List<Caso> listarPorAnalista(Long id){
+        return r.findByAnalistaIdOrderByFechaInicioDesc(id);
+    } 
+
+    public List<Caso> listarPorEstado(EstadoCaso e){
+        return r.findByEstado(e);
+    } 
+    
+    public List<Caso> listarPorPeriodo(LocalDateTime i,LocalDateTime f){
+        return r.findByFechaInicioBetweenOrderByFechaInicioDesc(i,f);
+    } 
+}
